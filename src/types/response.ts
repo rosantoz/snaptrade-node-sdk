@@ -12,7 +12,7 @@ import {
   PositionType,
   SymbolType,
   TradeType,
-  UniversalSymbolType,
+  UniversalSymbolType
 } from './general';
 
 export interface ResponseType {
@@ -90,15 +90,24 @@ export interface AccountResponseType extends ResponseType {
   data: AccountType;
 }
 
+export interface AccountsResponseType extends ResponseType {
+  data: AccountType[];
+}
+
 export interface BalanceResponseType extends ResponseType {
   data: BalanceType[];
 }
 
 export interface AccountPositionsResponseType extends ResponseType {
   data: {
-    symbol: SymbolType;
-    units: number;
+    symbol: {
+        symbol: SymbolType,
+    }
     price: number;
+    open_pnl: number | null;
+    fractional_units: number | null;
+    units: number;
+    average_purchase_price: number;
   }[];
 }
 
